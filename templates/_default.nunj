@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>{{ title }} - Datasektionen Docs</title>
-        <link rel="stylesheet" href="/static/css/compiled.css" />
+        <link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
         <script type="text/javascript">
           window.tbaas_conf = {
             system_name: "aurora",
