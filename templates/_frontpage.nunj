@@ -1,6 +1,28 @@
 {% extends "templates/_layout.nunj" %}
 {% block content %}
 
+    <div id="hello_tomorrow">
+        <div class="contain row">
+            <div class="col-md-6">
+                <p>
+                    <strong>Välkommen till nya datasektionen.se!
+                    Vår site har gjorts om helt och hållet från grunden för att fungera
+                    bättre, snyggare och smidigare både för dig som är sektionsmedlem
+                    eller dig med bakgrund utanför Datasektionen.</strong>
+                    Vi fortsätter arbetet med att färdigställa siten och dess bakomliggande system kontinuerligt.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    Navigera bland nya system och nytt innehåll med CMD-K/CTRL-K, eller genom
+                    att trycka på deltat uppe i det vänstra hörnet, som finns i alla nya
+                    system och tjänster. Om du har frågor, funderingar, eller är sugen på att hjälpa till med utvecklingen - tveka inte att höra av dig till <a href="mailto:ior@d.kth.se">IOR!</a>
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
     <header id="home">
         <div id="shield">
             <a href="/">
