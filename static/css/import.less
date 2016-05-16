@@ -4,6 +4,11 @@
 
 @cerise: #e83d84;
 @offblack: #212121;
+@blue: #6e838f;
+
+body {
+  background: #fafafa;
+}
 
 #methone-container-replace::shadow #methone_header {
   background: @cerise !important;
@@ -11,160 +16,78 @@
 
 .clear { clear: both; }
 
-@media screen and (min-width: 992px) {
-  #home_hero_left, #home_hero_right {
-    height: 100vh;
-    min-height: 800px;
-  }
-
-  #home_hero_right {
-    background-image: url("/static/gfx/right.jpg");
-    background-size: cover;
-  }
-
-  #home_hero_left {
-    background-image: url("/static/gfx/left.jpg");
-    background-size: cover;
-  }
+header#home {
+  background: #333 url("/static/gfx/bg.jpg") bottom center;
+  background-size: cover;
+  min-height: 500px;
+  text-align: center;
 
   #shield {
-    position: absolute;
-    top: 8vh;
-    padding-top: 50px;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 35px;
 
     img {
+      margin: 0 auto;
       max-width: 300px;
     }
-
-    #home_hero_logo_left, #home_hero_logo_right {
-      width: 50%;
-      float: left;
-
-      h1, h2 {
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-        font-weight: 900;
-        color: white;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, .3)
-      }
-
-      h1 {
-        font-size: 60px;
-        padding: 0 2px;
-      }
-
-      h2 {
-        font-size: 24px;
-        vertical-align: super;
-      }
-    }
-
-    #home_hero_logo_left {
-      text-align: right;
-      h1 {
-        color: @cerise;
-      }
-    }
-    #home_hero_logo_right { text-align: left; }
   }
 
-  .home_hero_inner {
-    padding-top: 525px;
-    width: 100%;
-    max-width: 620px;
+  #home_logo {
+    padding-bottom: 50px;
 
-    &, p, h3 {
-      font-size: 17px;
-      text-align: justify;
-      line-height: 200%;
-    }
-
-    h3 {
-      font-weight: 900;
-    }
-
-    p {
+    small {
+      color: #fff;
+      font-size: 16px;
       font-weight: 100;
     }
-  }
 
-  #home_hero_left {
-    padding-right: 0;
-    background-size: cover;
-
-    & .home_hero_inner {
-      margin-left: auto;
-      padding-right: 4vw;
-    }
-  }
-
-  #home_hero_right {
-    padding-left: 0;
-    background-size: cover;
-
-    & .home_hero_inner {
-      margin-right: auto;
-      padding-left: 4vw;
+    h1 {
+      margin: 0;
+      padding: 15px 0;
+      display: block;
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+      font-size: 60px;
     }
   }
 }
 
-@media screen and (max-width: 991px) {
-  #shield-mobile {
-    display: block;
-    text-align: center;
-    #home_hero_logo {
-      h1 {
-        display: inline-block;
-        background: @cerise;
-        color: #FFFFFF;
-        padding: 5px 10px;
-        font-weight: 900;
-        margin: 15px 0 0;
-      }
-      h2 { display: none; }
-    }
-  }
-  #home_hero_left {
-    padding-top: 65px;
-    padding-bottom: 25px;
-    text-align: center;
+#home_intro, #home_news {
+
+  &, p, h3 {
+    font-size: 17px;
+    line-height: 170%;
   }
 
-  #home_hero_right {
-    padding-top: 0;
-
-    #sticky {
-      margin-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, .35);
-      background: rgba(255, 255, 255, .15);
-      padding-bottom: 15px;
-    }
+  h3 {
+    font-weight: 900;
   }
 
-  .home_hero_inner p {
-    margin-bottom: 0;
+  p {
+    font-weight: 400;
   }
-
-  #home_sections section { padding: 50px 0 !important; }
 }
 
-#home_hero_left { background-color: @offblack; }
-#home_hero_right { background-color: @cerise; }
+#home_intro {
+  h3 {
+    color: @cerise;
+    line-height: 190% !important;
+  }
+  p {
+    color: @blue;
+    line-height: 190% !important;
+  }
+}
 
-#home_hero_right {
+#home_news {
 
   .news_item {
     display: block;
-    color: #FFFFFF;
     padding-top: 1em;
     max-height: 80px;
     overflow: hidden;
+    color: @blue !important;
 
     h4 {
       font-weight: 900;
@@ -187,66 +110,79 @@
     }
   }
 
-  #sticky h4 {
-    padding: 0;
-    margin: 1em 0 0;
+  #sticky {
+    h4 {
+      padding: 0;
+      margin: 1em 0 0;
+      color: @blue;
+    }
+    p {
+      font-size: 14px;
+      color: @blue;
+    }
   }
 }
 
-.dock-top {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
+h2#sections_intro {
+  text-transform: uppercase;
+  color: @blue;
+  font-weight: 100;
+  border: none;
+  margin: 0;
+  padding: 25px 0 40px;
+  font-size: 35px;
+  text-align: center;
 
-.home_hero_inner {
-  color: white;
-  line-height: 175%;
+  span {
+    font-weight: 900;
+    color: @cerise;
+  }
 }
 
 #home_sections {
-  section {
-    box-shadow: inset 0 1px 10px rgba(0, 0, 0, .2);
-    padding: 150px 0;
+  .home_section_icon {
+    color: @cerise;
+    font-size: 80px;
+    text-align: center;
+  }
 
-    &:first-child {
-      background: url("/static/gfx/studies.jpg") center;
-      background-size: cover;
+  :first-child {
+    .home_section_icon i:before {
+      content: "\f19d";
     }
-    &:nth-child(2) {
-      background: url("/static/gfx/socialt.jpg") center;
-      background-size: cover;
+  }
+  :nth-child(2) {
+    .home_section_icon i:before {
+      content: "\f004";
     }
-    &:nth-child(3) {
-      background: url("/static/gfx/business.jpg") center;
-      background-size: cover;
+  }
+  :nth-child(3) {
+    .home_section_icon i:before {
+      content: "\f1ad";
     }
+  }
 
-    .home_section {
-      width: 90%;
-      margin: 0 auto;
-      max-width: 800px;
+  h2 {
+    text-align: center;
+  }
 
-      h2, p {
-        margin: 0;
-        padding: 0;
-        color: #FFFFFF;
-        line-height: 200%;
-      }
+  p {
+    font-size: 15px;
+    line-height: 185%;
+    text-align: justify;
+    display: block;
+  }
 
-      h2 {
-        font-size: 3rem;
-        font-weight: 900;
-        display: block;
-        text-align: center;
-      }
-
-      p {
-        text-align: center;
-        font-size: 1.1rem;
-        font-weight: 100;
-        a { color: #FFFFFF; text-decoration: underline; }
-      }
-    }
+  a.action {
+    display: table;
     background: @cerise;
+    border-bottom: 4px solid darken(@cerise, 15);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 7px 15px 3px;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto 0;
   }
 }

@@ -1,115 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>{{ title }} - Datasektionen Docs</title>
-	<link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
-	<link rel="stylesheet" href="/static/css/import.css">
-	<script type="text/javascript">
-		window.tbaas_conf = {
-			system_name: "aurora",
-			target_id: "methone-container-replace",
-			primary_color: "#fcda04",
-			topbar_items: [
-				{% for topItem in nav %}
-				{
-					str: "{{ topItem.title }}",
-					href: "{{ topItem.slug }}"
-				},
-				{% endfor %}
-			]
-		}
-	</script>
-	<script async src="http://methone.datasektionen.se"></script>
+    <title>{{ title }} - Datasektionen.se</title>
+    <link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
+    <link rel="stylesheet" href="/static/css/import.css">
+    <script type="text/javascript">
+        window.tbaas_conf = {
+            system_name: "bawang",
+            target_id: "methone-container-replace",
+            primary_color: "#ec5f99",
+            secondary_color: "white",
+            delta_invert: true,
+            topbar_items: [
+                {% for topItem in nav %}
+                {
+                    str: "{{ topItem.title }}",
+                    href: "{{ topItem.slug }}"
+                },
+                {% endfor %}
+            ]
+        }
+    </script>
+    <script async src="http://methone.datasektionen.se"></script>
 </head>
 <body>
 <div id="methone-container-replace"></div>
-<div id="application" class="dock-top cerise">
+<div id="application" class="cerise">
 
-    <div id="shield" class="hidden-xs hidden-sm">
-        <img src="/static/gfx/Skold_Vit_Final.png" width="80%" />
+    <header id="home">
+        <div id="shield">
+            <a href="/">
+                <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
+            </a>
+        </div>
 
-        <div id="home_hero_logo">
-            <div id="home_hero_logo_left">
-                <h1>Konglig Data</h1>
+        <div id="home_logo">
+            <small>Välkommen till</small>
+            <h1>Konglig Datasektionen</h1>
+            <small>vid Kungliga Tekniska Högskolan</small>
+        </div>
+    </header>
+
+    <div id="content">
+        <div class="row">
+            <div class="col-md-6" id="home_intro">
+                {{ body | safe }}
             </div>
-            <div id="home_hero_logo_right">
-                <h1>sektionen</h1> <h2>vid KTH</h2>
+            <div class="col-md-6" id="home_news">
+                <div class="row">
+                    <div class="col-sm-6" id="news">
+                        <a class="news_item" href="#">
+                            <h4>Teckningskväll Chill and Sketch</h4>
+                            <div class="news_item_meta">
+                                <i class="fa fa-clock-o"></i> 21 september 17:30
+                            </div>
+                            <div class="news_item_meta">
+                                <i class="fa fa-location-arrow"></i> META
+                            </div>
+                        </a>
+                        <a class="news_item" href="#">
+                            <h4>Hackerkväll: CONSOLE WARS!</h4>
+                            <div class="news_item_meta">
+                                <i class="fa fa-clock-o"></i> 29 april 17:17
+                            </div>
+                            <div class="news_item_meta">
+                                <i class="fa fa-location-arrow"></i> Grå
+                            </div>
+                        </a>
+                        <a class="news_item" href="#">
+                            <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
+                            <div class="news_item_meta">
+                                <i class="fa fa-clock-o"></i> 21 september 17:30
+                            </div>
+                            <div class="news_item_meta">
+                                <i class="fa fa-location-arrow"></i> Obestämd plats
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-6" id="sticky">
+                        <h4>META stängt under D-Dagen 1 oktober</h4>
+                        <p>Under torsdagen den 1 oktober kommer META vara stängt eftersom den kommer utnyttjas som företagslounge. Värma mat går att t.ex. göra i Nymble.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6" id="home_hero_left">
-                <div id="shield-mobile" class="visible-xs visible-sm">
-                    <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
+        <div class="clear"></div>
+        <hr />
 
-                    <div id="home_hero_logo">
-                        <h1>Konglig Datasektionen</h1>
-                        <h2>vid KTH</h2>
+        <h2 id="sections_intro">Det här är <span>Datasektionen</span></h2>
+
+        <div id="home_sections">
+            {% for item in sidebar | split("<hr>") %}
+                <div class="col-md-4 home_section">
+                    <div class="home_section_icon">
+                        <i class="fa"></i>
                     </div>
-                </div>
-				<div class="home_hero_inner">
-                    {{ body | safe }}
-                </div>
-			</div>
-			<div class="col-md-6" id="home_hero_right">
-				<div class="home_hero_inner">
-                    <div class="row">
-                        <div class="col-sm-6" id="news">
-                            <a class="news_item" href="#">
-                                <h4>Teckningskväll Chill and Sketch</h4>
-                                <div class="news_item_meta">
-                                    <i class="fa fa-clock-o"></i> 21 september 17:30
-                                </div>
-                                <div class="news_item_meta">
-                                    <i class="fa fa-location-arrow"></i> META
-                                </div>
-                            </a>
-                            <a class="news_item" href="#">
-                                <h4>Hackerkväll: CONSOLE WARS!</h4>
-                                <div class="news_item_meta">
-                                    <i class="fa fa-clock-o"></i> 29 april 17:17
-                                </div>
-                                <div class="news_item_meta">
-                                    <i class="fa fa-location-arrow"></i> Grå
-                                </div>
-                            </a>
-                            <a class="news_item" href="#">
-                                <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
-                                <div class="news_item_meta">
-                                    <i class="fa fa-clock-o"></i> 21 september 17:30
-                                </div>
-                                <div class="news_item_meta">
-                                    <i class="fa fa-location-arrow"></i> Obestämd plats
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-6" id="sticky">
-                            <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
-                            <p>lolfi</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</div>
-
-    <div class="clear"></div>
-
-    <div id="home_sections">
-        {% for item in sidebar | split("<hr>") %}
-            <section>
-                <div class="home_section">
                     {{ item | safe }}
                 </div>
-            </section>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="clear"></div>
+
     </div>
-
-
 
 </div>
 </body>
