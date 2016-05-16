@@ -172,17 +172,38 @@ h2#sections_intro {
     text-align: justify;
     display: block;
   }
+}
 
-  a.action {
-    display: table;
-    background: @cerise;
-    border-bottom: 4px solid darken(@cerise, 15);
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 13px;
-    padding: 7px 15px 3px;
-    color: #fff;
+a.action {
+  display: table;
+  background: @cerise;
+  border-bottom: 4px solid darken(@cerise, 15);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 7px 15px 3px;
+  color: #fff !important;
+  text-align: center;
+  margin: 20px auto 0;
+}
+
+#footer {
+  background: #333333;
+  margin: 50px -50px -50px;
+  padding-bottom: 0;
+  height: 300px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, .05);
+
+  #contact {
     text-align: center;
-    margin: 20px auto 0;
+    p {
+      color: #fff;
+    }
+  }
+
+  #map {
+    padding: 0;
+    height: 300px;
+    overflow: hidden;
   }
 }
