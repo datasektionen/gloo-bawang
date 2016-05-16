@@ -2,21 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{{ title }} - Datasektionen Docs</title>
 	<link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
+	<link rel="stylesheet" href="/static/css/import.css">
 	<script type="text/javascript">
 		window.tbaas_conf = {
 			system_name: "aurora",
 			target_id: "methone-container-replace",
-			primary_color: "#2196f3",
-			secondary_color: "white",
-			delta_invert: true,
+			primary_color: "#fcda04",
 			topbar_items: [
 				{% for topItem in nav %}
-					{
-						str: "{{ topItem.title }}",
-						href: "{{ topItem.slug }}"
-					},
+				{
+					str: "{{ topItem.title }}",
+					href: "{{ topItem.slug }}"
+				},
 				{% endfor %}
 			]
 		}
@@ -25,89 +25,92 @@
 </head>
 <body>
 <div id="methone-container-replace"></div>
-<div id="application" class="blue">
-	<header>
-		<div class="header-inner">
-			<div class="row">
-				<div class="header-left col-md-2">
-					<a href="/">&laquo; Tillbaka</a>
-				</div>
-				<div class="col-md-8">
-					<h2>{{ title }}</h2>
-				</div>
-				<div class="header-right col-md-2">
-					<span class="visible-lg-inline">Se p&aring;</span>
-					<a href="https://github.com/datasektionen/Docs" class="primary-action">GitHub</a>
-				</div>
+<div id="application" class="dock-top cerise">
+
+    <div id="shield" class="hidden-xs hidden-sm">
+        <img src="/static/gfx/Skold_Vit_Final.png" width="80%" />
+
+        <div id="home_hero_logo">
+            <div id="home_hero_logo_left">
+                <h1>Konglig Data</h1>
+            </div>
+            <div id="home_hero_logo_right">
+                <h1>sektionen</h1> <h2>vid KTH</h2>
+            </div>
+        </div>
+    </div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6" id="home_hero_left">
+                <div id="shield-mobile" class="visible-xs visible-sm">
+                    <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
+
+                    <div id="home_hero_logo">
+                        <h1>Konglig Datasektionen</h1>
+                        <h2>vid KTH</h2>
+                    </div>
+                </div>
+				<div class="home_hero_inner">
+                    {{ body | safe }}
+                </div>
 			</div>
-			<div class="clear"></div>
+			<div class="col-md-6" id="home_hero_right">
+				<div class="home_hero_inner">
+                    <div class="row">
+                        <div class="col-sm-6" id="news">
+                            <a class="news_item" href="#">
+                                <h4>Teckningskväll Chill and Sketch</h4>
+                                <div class="news_item_meta">
+                                    <i class="fa fa-clock-o"></i> 21 september 17:30
+                                </div>
+                                <div class="news_item_meta">
+                                    <i class="fa fa-location-arrow"></i> META
+                                </div>
+                            </a>
+                            <a class="news_item" href="#">
+                                <h4>Hackerkväll: CONSOLE WARS!</h4>
+                                <div class="news_item_meta">
+                                    <i class="fa fa-clock-o"></i> 29 april 17:17
+                                </div>
+                                <div class="news_item_meta">
+                                    <i class="fa fa-location-arrow"></i> Grå
+                                </div>
+                            </a>
+                            <a class="news_item" href="#">
+                                <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
+                                <div class="news_item_meta">
+                                    <i class="fa fa-clock-o"></i> 21 september 17:30
+                                </div>
+                                <div class="news_item_meta">
+                                    <i class="fa fa-location-arrow"></i> Obestämd plats
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-6" id="sticky">
+                            <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
+                            <p>lolfi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
-	</header>
-	<div id="content">
-		{% block body %}
-			<div class="row">
-				<div class="col-sm-4 col-md-3">
-					<div id="secondary-nav">
-						{% block navigation %}
-							{% set levelTwo = false %}
-							{% for topItem in nav %}
-								{% if topItem.expanded or topItem.active %}
-									{% set levelTwo = true %}
-									<h3><a href="{{ topItem.slug }}">{{ topItem.title }}</a></h3>
-									<ul>
-										<li>
-											<a {% if topItem.active %} class="text-theme-color strong" {% endif %}
-													href="{{ topItem.slug }}">{{ topItem.title }}</a>
-										</li>
-										{% for item in topItem.nav %}
-											<li><a {% if item.active %} class="text-theme-color strong" {% endif %}
-														href="{{ item.slug }}">{{ item.title }}</a></li>
-											{% if item.nav %}
-												<ul>
-													{% for child in item.nav %}
-														<li><a href="{{ child.slug }}">{{ child.title }}</a></li>
-													{% endfor %}
-												</ul>
-											{% endif %}
-										{% endfor %}
-									</ul>
-								{% endif %}
-							{% endfor %}
-							{% if not levelTwo %}
-								<h3><a href="/">{{ title }}</a></h3>
-								{% for topItem in nav %}
-									<ul>
-										<li>
-											<a href="{{ topItem.slug }}">{{ topItem.title }}</a>
-										</li>
-									</ul>
-								{% endfor %}
-							{% endif %}
-						{% endblock %}
-					</div>
-				</div>
-				<div class="col-sm-8 col-md-9">
-					<div class="row">
-						<div class="col-md-9">
-							{{ body | safe }}
-						</div>
-						<div class="col-md-3" id="sidebar">
-							{% block sidebar %}
-								{{ sidebar | safe }}
-								<hr />
-								<ul>
-									{% for anchor in anchors %}
-										<li><a href="#{{ anchor.id }}">{{ anchor.value }}</a></li>
-									{% endfor %}
-								</ul>
-							{% endblock %}
-						</div>
-					</div>
-				</div>
-				<div class="clear"></div>
-			</div>
-		{% endblock %}
 	</div>
+
+    <div class="clear"></div>
+
+    <div id="home_sections">
+        {% for item in sidebar | split("<hr>") %}
+            <section>
+                <div class="home_section">
+                    {{ item | safe }}
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+
+
+
 </div>
 </body>
 </html>
