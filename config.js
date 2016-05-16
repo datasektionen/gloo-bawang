@@ -16,6 +16,7 @@ module.exports = {
     engine: "nunjucks",
     extension: "nunj",
     defaultTemplate: "_default",
+    frontpageTemplate: "_frontpage",
 
     // Directories this gloo instance uses to source its content
     templateDir: "templates",

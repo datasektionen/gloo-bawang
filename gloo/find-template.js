@@ -12,9 +12,9 @@ exports.find = function(req) {
 
     var searchPath = req.path;
 
-    // 1. Root URL always renders default template
+    // 1. Root URL always renders frontpage template
     if (req.path === "/")
-        return config.defaultTemplate + "." + config.extension;
+        return config.frontpageTemplate + "." + config.extension;
 
     // 2. Look for the exact path template
     var resolved = resolveTemplate(searchPath);
