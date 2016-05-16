@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }} - Datasektionen.se</title>
+    <link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
+    <link rel="stylesheet" href="/static/css/import.css">
+    <script type="text/javascript">
+        window.tbaas_conf = {
+            system_name: "bawang",
+            target_id: "methone-container-replace",
+            primary_color: "#ec5f99",
+            secondary_color: "white",
+            delta_invert: true,
+            topbar_items: [
+                {% for topItem in nav %}
+                {
+                    str: "{{ topItem.title }}",
+                    href: "{{ topItem.slug }}"
+                },
+                {% endfor %}
+            ]
+        }
+    </script>
+</head>
+<body>
+<div id="methone-container-replace"></div>
+<div id="application" class="cerise">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="http://methone.datasektionen.se"></script>
+</body>
+</html>
