@@ -1,112 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ title }} - Datasektionen.se</title>
-    <link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
-    <link rel="stylesheet" href="/static/css/import.css">
-    <script type="text/javascript">
-        window.tbaas_conf = {
-            system_name: "bawang",
-            target_id: "methone-container-replace",
-            primary_color: "#ec5f99",
-            secondary_color: "white",
-            delta_invert: true,
-            topbar_items: [
-                {% for topItem in nav %}
-                {
-                    str: "{{ topItem.title }}",
-                    href: "{{ topItem.slug }}"
-                },
-                {% endfor %}
-            ]
-        }
-    </script>
-    <script async src="http://methone.datasektionen.se"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{{ title }} - Datasektionen Docs</title>
+	<link rel="stylesheet" href="http://aurora.froyo.datasektionen.se/" type="text/css" />
+	<link rel="stylesheet" href="/static/css/import.css" type="text/css" />
+	<script type="text/javascript">
+		window.tbaas_conf = {
+			system_name: "bawang",
+			target_id: "methone-container-replace",
+			primary_color: "#ec5f99",
+			secondary_color: "white",
+			delta_invert: true,
+			topbar_items: [
+				{% for topItem in nav %}
+				{
+					str: "{{ topItem.title }}",
+					href: "{{ topItem.slug }}"
+				},
+				{% endfor %}
+			]
+		}
+	</script>
 </head>
 <body>
 <div id="methone-container-replace"></div>
 <div id="application" class="cerise">
+	<header>
+		<div class="header-inner">
+			<div class="row">
+				<div class="header-left col-md-2">
+					<a href="/">&laquo; Tillbaka</a>
+				</div>
+				<div class="col-md-8">
+					<h2>{{ title }}</h2>
+				</div>
+				<div class="header-right col-md-2">
+					<span class="visible-lg-inline">Se p&aring;</span>
+					<a href="https://github.com/datasektionen/Docs" class="primary-action">GitHub</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</header>
+	<div id="content">
+		{% block body %}
+			<div class="row">
+				<div class="col-sm-4 col-md-3">
+					<div id="secondary-nav">
+						{% block navigation %}
+							{% set levelTwo = false %}
+							{% for topItem in nav %}
+								{% if topItem.expanded or topItem.active %}
+									{% set levelTwo = true %}
+									<h3><a href="{{ topItem.slug }}">{{ topItem.title }}</a></h3>
+									<ul>
+										<li>
+											<a {% if topItem.active %} class="text-theme-color strong" {% endif %}
+													href="{{ topItem.slug }}">{{ topItem.title }}</a>
+										</li>
+										{% for item in topItem.nav %}
+											<li><a {% if item.active %} class="text-theme-color strong" {% endif %}
+														href="{{ item.slug }}">{{ item.title }}</a></li>
+											{% if item.nav %}
+												<ul>
+													{% for child in item.nav %}
+														<li><a href="{{ child.slug }}">{{ child.title }}</a></li>
+													{% endfor %}
+												</ul>
+											{% endif %}
+										{% endfor %}
+									</ul>
+								{% endif %}
+							{% endfor %}
+							{% if not levelTwo %}
+								<h3><a href="/">{{ title }}</a></h3>
+								{% for topItem in nav %}
+									<ul>
+										<li>
+											<a href="{{ topItem.slug }}">{{ topItem.title }}</a>
+										</li>
+									</ul>
+								{% endfor %}
+							{% endif %}
+						{% endblock %}
+					</div>
+				</div>
+				<div class="col-sm-8 col-md-9">
+					<div class="row">
+						<div class="col-md-9">
+							{{ body | safe }}
+						</div>
+						<div class="col-md-3" id="sidebar">
+							{% block sidebar %}
+								{% if sidebar != "" %}
+									<div class="sidebar-card">
+										{{ sidebar | safe }}
+									</div>
+								{% endif %}
+								<div class="sidebar-card">
+									<h2>På den här sidan</h2>
+									<ul>
+										{% for anchor in anchors %}
+											<li><a href="#{{ anchor.id }}">{{ anchor.value }}</a></li>
+										{% endfor %}
+									</ul>
+								</div>
+							{% endblock %}
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		{% endblock %}
 
-    <header id="home">
-        <div id="shield">
-            <a href="/">
-                <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
-            </a>
-        </div>
+		<div class="clear"></div>
 
-        <div id="home_logo">
-            <small>Välkommen till</small>
-            <h1>Konglig Datasektionen</h1>
-            <small>vid Kungliga Tekniska Högskolan</small>
-        </div>
-    </header>
+		<div id="footer" class="row">
+			<div class="col-sm-5 col-md-3" id="contact">
+				<p>
+					<strong>Adress</strong>
+				</p>
+				<p>
+					Konglig Datasektionen<br />
+					Fack vid THS<br />
+					100 44 Stockholm
+				</p>
+				<p>
+					<strong>Organisationsnummer</strong>
+				</p>
+				<p>802412 - 7709</p>
+				<p>
+					<a class="action" href="/kontakt">Kontakt</a>
+				</p>
+			</div>
+			<div class="col-sm-6 col-md-9" id="map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.0958020405822!2d18.069220116002757!3d59.348048616563695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d6a99ea1e8d%3A0x8637b28fa239bfcb!2sOsquars+backe+21%2C+114+28+Stockholm!5e0!3m2!1sen!2sse!4v1463425310266" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+			<div class="clear"></div>
+		</div>
 
-    <div id="content">
-        <div class="row">
-            <div class="col-md-6" id="home_intro">
-                {{ body | safe }}
-            </div>
-            <div class="col-md-6" id="home_news">
-                <div class="row">
-                    <div class="col-sm-6" id="news">
-                        <a class="news_item" href="#">
-                            <h4>Teckningskväll Chill and Sketch</h4>
-                            <div class="news_item_meta">
-                                <i class="fa fa-clock-o"></i> 21 september 17:30
-                            </div>
-                            <div class="news_item_meta">
-                                <i class="fa fa-location-arrow"></i> META
-                            </div>
-                        </a>
-                        <a class="news_item" href="#">
-                            <h4>Hackerkväll: CONSOLE WARS!</h4>
-                            <div class="news_item_meta">
-                                <i class="fa fa-clock-o"></i> 29 april 17:17
-                            </div>
-                            <div class="news_item_meta">
-                                <i class="fa fa-location-arrow"></i> Grå
-                            </div>
-                        </a>
-                        <a class="news_item" href="#">
-                            <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
-                            <div class="news_item_meta">
-                                <i class="fa fa-clock-o"></i> 21 september 17:30
-                            </div>
-                            <div class="news_item_meta">
-                                <i class="fa fa-location-arrow"></i> Obestämd plats
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6" id="sticky">
-                        <h4>META stängt under D-Dagen 1 oktober</h4>
-                        <p>Under torsdagen den 1 oktober kommer META vara stängt eftersom den kommer utnyttjas som företagslounge. Värma mat går att t.ex. göra i Nymble.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="clear"></div>
-        <hr />
-
-        <h2 id="sections_intro">Det här är <span>Datasektionen</span></h2>
-
-        <div id="home_sections">
-            {% for item in sidebar | split("<hr>") %}
-                <div class="col-md-4 home_section">
-                    <div class="home_section_icon">
-                        <i class="fa"></i>
-                    </div>
-                    {{ item | safe }}
-                </div>
-            {% endfor %}
-        </div>
-
-        <div class="clear"></div>
-
-    </div>
-
+	</div>
 </div>
+	<script src="http://methone.datasektionen.se"></script>
 </body>
 </html>
