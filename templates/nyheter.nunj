@@ -1,9 +1,5 @@
 {% extends "templates/_layout.nunj" %}
 
-{% block js %}
-    <script src="/static/js/bundle.js"></script>
-{% endblock %}
-
 {% block content %}
 
     <header>
