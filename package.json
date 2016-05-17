@@ -35,7 +35,7 @@
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
-    "consolidate": "^0.14.0",
+    "consolidate": "0.14.0",
     "debug": "^2.2.0",
     "express": "^4.13.4",
     "grunt": "^0.4.5",
