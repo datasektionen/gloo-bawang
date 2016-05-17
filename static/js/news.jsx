@@ -103,7 +103,7 @@ class SingleItem extends React.Component {
 
     return (
       <div>
-        <a href="#">Close</a>
+        <a href="#">Stäng</a>
         <h1>{title_sv}</h1>
         <p dangerouslySetInnerHTML={{__html: content_sv}}></p>
         <p>{author}</p>
@@ -124,8 +124,11 @@ function TypeButton(props) {
 
 function NewsItem(props) {
   return (
-    <div>
-      <a href={'#' + props.id}>{props.title_sv}</a>
+    <div className="col-sm-6 col-md-4">
+      <a href={'#' + props.id} className="notice ultra_light" style={{display: "block"}}>
+        <h3>{props.title_sv}</h3>
+        <p dangerouslySetInnerHTML={{__html: props.content_sv}}></p>
+      </a>
     </div>
   )
 }
