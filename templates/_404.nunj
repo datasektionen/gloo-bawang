@@ -1,5 +1,15 @@
 {% extends "templates/_default.nunj" %}
 
+{% set title = "404" %}
+
 {% block body %}
-    <h1>404</h1>
+    <div class="text-center" style="padding: 50px;">
+        <h2>Innehållet du sökte hittades inte</h2>
+        <br />
+        <h3>Kanske stavade du fel i adressen, eller så har innehållet flyttat.</h3>
+        <p>
+            Du kan prova att kolla motsvarande URL på
+            <a href="http://purjo.datasektionen.se{{ req.url }}">Datasektionens gamla hemsida.</a>
+        </p>
+    </div>
 {% endblock %}
