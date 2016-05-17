@@ -30,6 +30,7 @@
     {% block content %}{% endblock %}
 </div>
 
+{% block js %}{% endblock %}
 <script src="http://methone.datasektionen.se"></script>
 </body>
 </html>

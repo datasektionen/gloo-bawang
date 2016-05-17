@@ -1,0 +1,32 @@
+{% extends "templates/_layout.nunj" %}
+
+{% block js %}
+    <script src="/static/js/bundle.js"></script>
+{% endblock %}
+
+{% block content %}
+
+    <header>
+        <div class="header-inner">
+            <div class="row">
+                <div class="header-left col-md-2">
+                    <a href="/">&laquo; Tillbaka</a>
+                </div>
+                <div class="col-md-8">
+                    <h2>Nyheter/Event</h2>
+                </div>
+                <div class="header-right col-md-2">
+                    <span class="visible-lg-inline">Se p&aring;</span>
+                    <a href="http://prometheus.datasektionen.se" class="primary-action">Redigera</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </header>
+    <div id="content">
+        <div id="mount_point"></div>
+
+        {% include "templates/_footer.nunj" %}
+    </div>
+
+{% endblock %}
