@@ -12,7 +12,6 @@
                     <h2>Nyheter/Event</h2>
                 </div>
                 <div class="header-right col-md-2">
-                    <span class="visible-lg-inline">Se p&aring;</span>
                     <a href="http://prometheus.datasektionen.se" class="primary-action">Redigera</a>
                 </div>
             </div>
@@ -25,4 +24,8 @@
         {% include "templates/_footer.nunj" %}
     </div>
 
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/news.js"></script>
 {% endblock %}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node gloo/tests.js",
-    "start": "grunt less; browserify -o static/js/bundle.js static/js/news.jsx; node index.js"
+    "start": "grunt less; browserify -o static/js/news.js static/js/news.jsx; browserify -o static/js/first.js static/js/first.jsx; node index.js"
   },
   "browserify": {
     "transform": [
@@ -41,6 +41,7 @@
     "grunt": "^0.4.5",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-less": "^1.2.0",
+    "moment": "^2.13.0",
     "nunjucks": "^2.4.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",

@@ -72,13 +72,13 @@ class SingleItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title_sv: 'Post title',
+      title_sv: 'Läser in...',
       content_sv: '',
       author: '',
       sticky: false,
-      publishDate: 'eeeh',
+      publishDate: '',
       id: '',
-      image: 'lol.jpg'
+      image: ''
     };
 
     this.getContent = this.getContent.bind(this)
@@ -126,11 +126,11 @@ function NewsItem(props) {
   return (
     <div className="col-sm-6 col-md-4">
       <a href={'#' + props.id} className="notice ultra_light" style={{display: "block"}}>
-        <h3>{props.title_sv}</h3>
+        <h3>{props.title}</h3>
         <p dangerouslySetInnerHTML={{__html: props.content_sv}}></p>
       </a>
     </div>
   )
 }
 
-ReactDom.render(<News />, document.querySelector('#mount_point'));
+ReactDom.render(<News />, document.getElementById('mount_point'));

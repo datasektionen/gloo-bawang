@@ -1,46 +1,50 @@
 var React    = require('react');
 var ReactDom = require('react-dom');
+var moment   = require('moment');
+moment.locale('sv');
+
+require('./stickies.jsx');
 
 class CurrentEvents extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      items: []
-    };
-  }
+        this.state = {
+            items: []
+        };
+    }
 
-  componentDidMount() {
-    this.getEvents()
-  }
+    componentDidMount() {
+        this.getEvents()
+    }
 
-  getEvents() { 
-    fetch('http://prometheus.datasektionen.se/api/list/sv/event')
-      .then(response => response.json())
-      .then(json => {
-        this.setState({items: json})
-      })
-  }
+    getEvents() {
+        fetch('http://prometheus.datasektionen.se/api/list/sv/event')
+            .then(response => response.json())
+            .then(json => {
+                this.setState({items: json})
+            })
+    }
 
-  render() {
-    var {items} = this.state;
+    render() {
+        var {items} = this.state;
 
-    return (
-      <div>
-      {items.filter((x, i) => i <= 2).map(item => (
-        <a class="news_item" href="#">
-            <h4>{item.title}</h4>
-            <div class="news_item_meta">
-                <i class="fa fa-clock-o"></i> {item.time}
+        return (
+            <div>
+                {items.filter((x, i) => i <= 2).map(item => (
+                    <a className="news_item" key={item.id} href={'/nyheter#' + item.id}>
+                        <h4>{item.title_sv}</h4>
+                        <div className="news_item_meta">
+                            <i className="fa fa-clock-o"></i> {moment(item.eventStart).format('D MMMM HH:mm')}
+                        </div>
+                        <div className="news_item_meta">
+                            <i className="fa fa-location-arrow"></i> {item.eventLocation}
+                        </div>
+                    </a>
+                ))}
             </div>
-            <div class="news_item_meta">
-                <i class="fa fa-location-arrow"></i> {item.location}
-            </div>
-        </a>
-      ))}
-      </div>
-    )
-  }
+        )
+    }
 }
 
-ReactDom.render(<CurrentEvents />, document.querySelector('#news'))
+ReactDom.render(<CurrentEvents />, document.getElementById('news'));
