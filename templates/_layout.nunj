@@ -15,12 +15,12 @@
             secondary_color: "white",
             delta_invert: true,
             topbar_items: [
-                { str: "Nyheter/Event", href: "/nyheter" },
+                { str: "Nyheter", href: "/nyheter" },
                 { str: "Sektionen", href: "/sektionen" },
                 { str: "Studier", href: "/studier" },
                 { str: "Nämnder", href: "/namnder" },
-                { str: "Näringsliv", href: "/naringsliv" },
                 { str: "Organisation", href: "/organisation" },
+                { str: "Näringsliv", href: "/naringsliv" },
                 { str: "Kontakt", href: "/kontakt" }
             ]
         }
