@@ -85,7 +85,7 @@ class SingleItem extends React.Component {
   }
 
   getContent(id) {
-    fetch('http://prometheus.datasektionen.se/api/item/' + id)
+    fetch('https://prometheus.datasektionen.se/api/item/' + id)
       .then(response => response.json())
       .then(json => this.setState(json))
   }
