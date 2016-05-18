@@ -19,14 +19,16 @@ module.exports = function(app) {
         var templatePath = template.find(req);
         
         if (templatePath)
-            getTaitanData(req.path, function(taitanData) {
+            getTaitanData(req.path, function(taitanData, redirect) {
+                if (redirect)
+                    return res.redirect(redirect);
                 if (taitanData)
-                    res.render(templatePath, taitanData);
+                    return res.render(templatePath, taitanData);
                 else
-                    res.render("_404." + config.extension, { req: req });
+                    return res.render("_404." + config.extension, { req: req });
             });
         else
-            res.send("404: The page could not be found and this gloo instance contains no 404 template");
+            return res.send("404: The page could not be found and this gloo instance contains no 404 template");
 
     });
 
@@ -42,6 +44,9 @@ function getTaitanData(path, callback) {
     var requestCallback = function(res) {
         var collectedData = "";
         res.setEncoding("utf-8");
+
+        if (typeof res.headers.location !== "undefined")
+            return callback(undefined, res.headers.location);
 
         res.on("data", (data) => collectedData += data);
 
