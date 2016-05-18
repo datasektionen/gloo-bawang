@@ -15,7 +15,7 @@ class CurrentEvents extends React.Component {
     }
 
     getAll() {
-        fetch('http://prometheus.datasektionen.se/api/sticky')
+        fetch('https://prometheus.datasektionen.se/api/sticky')
             .then(response => response.json())
             .then(json => this.setState({items: json}))
     }

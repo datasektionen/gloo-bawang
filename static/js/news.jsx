@@ -21,7 +21,7 @@ class News extends React.Component {
   }
 
   getNews(type) { 
-    fetch('http://prometheus.datasektionen.se/api/list/sv/' + type)
+    fetch('https://prometheus.datasektionen.se/api/list/sv/' + type)
       .then(response => response.json())
       .then(json => {
         this.setState({items: json, type: type})

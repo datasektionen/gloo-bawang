@@ -19,7 +19,7 @@ class CurrentEvents extends React.Component {
     }
 
     getEvents() {
-        fetch('http://prometheus.datasektionen.se/api/list/sv/event')
+        fetch('https://prometheus.datasektionen.se/api/list/sv/event')
             .then(response => response.json())
             .then(json => {
                 this.setState({items: json})
