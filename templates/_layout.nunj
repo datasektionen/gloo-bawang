@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e83d84" />
     <title>{{ title }} - Datasektionen.se</title>
     <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <link rel="stylesheet" href="/static/css/compiled.css">
@@ -14,12 +15,13 @@
             secondary_color: "white",
             delta_invert: true,
             topbar_items: [
-                {% for topItem in nav %}
-                {
-                    str: "{{ topItem.title }}",
-                    href: "{{ topItem.slug }}"
-                },
-                {% endfor %}
+                { str: "Nyheter/Event", href: "/nyheter" },
+                { str: "Sektionen", href: "/sektionen" },
+                { str: "Studier", href: "/studier" },
+                { str: "Nämnder", href: "/namnder" },
+                { str: "Näringsliv", href: "/naringsliv" },
+                { str: "Organisation", href: "/organisation" },
+                { str: "Kontakt", href: "/kontakt" }
             ]
         }
     </script>
