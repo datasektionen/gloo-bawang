@@ -1,9 +1,12 @@
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 body {
   background: #fafafa;
 }
 #methone-container-replace::shadow #methone_header {
   background: #e83d84 !important;
+}
+a,
+a:hover {
+  text-decoration: none !important;
 }
 .clear {
   clear: both;
@@ -58,9 +61,11 @@ header#home #home_logo h1 {
 #home_intro p,
 #home_news p,
 #home_intro h3,
-#home_news h3 {
+#home_news h3,
+#home_intro h4,
+#home_news h4 {
   font-size: 17px;
-  line-height: 170%;
+  line-height: 190%;
 }
 #home_intro h3,
 #home_news h3 {
@@ -72,16 +77,15 @@ header#home #home_logo h1 {
 }
 #home_intro h3 {
   color: #e83d84;
-  line-height: 190% !important;
+  margin-top: 0;
 }
 #home_intro p {
   color: #6e838f;
-  line-height: 190% !important;
 }
 #home_news .news_item {
   display: block;
-  padding-top: 1em;
-  max-height: 80px;
+  margin-bottom: 10px;
+  max-height: 60px;
   overflow: hidden;
   color: #6e838f !important;
 }
@@ -105,8 +109,9 @@ header#home #home_logo h1 {
 }
 #home_news #sticky h4 {
   padding: 0;
-  margin: 1em 0 0;
+  margin: 0 0 5px;
   color: #6e838f;
+  font-weight: 900;
 }
 #home_news #sticky p {
   font-size: 14px;
