@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ title }} - Datasektionen.se</title>
-    <link rel="stylesheet" href="//aurora.froyo.datasektionen.se/" type="text/css" />
+    <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <link rel="stylesheet" href="/static/css/import.css">
     <script type="text/javascript">
         window.tbaas_conf = {
