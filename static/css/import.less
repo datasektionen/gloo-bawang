@@ -230,10 +230,18 @@ a.action {
   height: 300px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, .05);
 
+  @media screen and (max-width: 400px) {
+    margin: 50px -25px -25px;
+  }
+
   #contact {
     text-align: center;
     p {
       color: #fff;
+    }
+
+    @media screen and (max-width: 400px) {
+      padding-bottom: 20px;
     }
   }
 
