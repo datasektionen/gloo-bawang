@@ -31,6 +31,11 @@ a, a:hover {
     color: #fff;
     font-weight: 900;
   }
+
+  @media screen and (max-width: 400px) {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 
 header#home {
@@ -66,6 +71,10 @@ header#home {
       color: white;
       text-shadow: 0 1px 3px rgba(0, 0, 0, .3);
       font-size: 60px;
+
+      @media screen and (max-width: 400px) {
+        font-size: 40px;
+      }
     }
   }
 }
@@ -73,6 +82,10 @@ header#home {
 #home_intro, #home_news {
 
   &, p, h3, h4 {
+    @media screen and (max-width: 400px) {
+      font-size: 15px;
+    }
+
     font-size: 17px;
     line-height: 190%;
   }
@@ -127,6 +140,8 @@ header#home {
   }
 
   #sticky {
+    overflow: auto;
+
     h4 {
       padding: 0;
       margin: 0 0 5px;
@@ -153,6 +168,10 @@ h2#sections_intro {
   span {
     font-weight: 900;
     color: @cerise;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 25px;
   }
 }
 

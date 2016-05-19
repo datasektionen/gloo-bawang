@@ -12,7 +12,7 @@
                     Vi fortsätter arbetet med att färdigställa siten och dess bakomliggande system kontinuerligt.
                 </p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 hidden-sm hidden-xs">
                 <p>
                     Navigera bland nya system och nytt innehåll med CMD-K/CTRL-K, eller genom
                     att trycka på deltat uppe i det vänstra hörnet, som finns i alla nya

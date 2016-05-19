@@ -56,6 +56,11 @@ header#home #home_logo h1 {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   font-size: 60px;
 }
+@media screen and (max-width: 400px) {
+  header#home #home_logo h1 {
+    font-size: 40px;
+  }
+}
 #home_intro,
 #home_news,
 #home_intro p,
@@ -106,6 +111,9 @@ header#home #home_logo h1 {
 #home_news .news_item .news_item_meta i {
   display: inline-block;
   padding-right: 5px;
+}
+#home_news #sticky {
+  overflow: auto;
 }
 #home_news #sticky h4 {
   padding: 0;
