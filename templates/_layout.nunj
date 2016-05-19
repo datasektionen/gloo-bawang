@@ -12,8 +12,8 @@
             system_name: "bawang",
             target_id: "methone-container-replace",
             primary_color: "#ec5f99",
-            secondary_color: "white",
-            delta_invert: true,
+            secondary_color: "#fff",
+            bar_color: "#e83d84",
             topbar_items: [
                 { str: "Nyheter", href: "/nyheter" },
                 { str: "Sektionen", href: "/sektionen" },
