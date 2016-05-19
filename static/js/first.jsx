@@ -1,3 +1,5 @@
+require('whatwg-fetch'); // fetch polyfill
+
 var React    = require('react');
 var ReactDom = require('react-dom');
 var moment   = require('moment');

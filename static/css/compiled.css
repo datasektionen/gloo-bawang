@@ -25,6 +25,12 @@ a:hover {
   color: #fff;
   font-weight: 900;
 }
+@media screen and (max-width: 400px) {
+  #hello_tomorrow {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
 header#home {
   background: #333 url("/static/gfx/bg.jpg") bottom center;
   background-size: cover;
@@ -71,6 +77,18 @@ header#home #home_logo h1 {
 #home_news h4 {
   font-size: 17px;
   line-height: 190%;
+}
+@media screen and (max-width: 400px) {
+  #home_intro,
+  #home_news,
+  #home_intro p,
+  #home_news p,
+  #home_intro h3,
+  #home_news h3,
+  #home_intro h4,
+  #home_news h4 {
+    font-size: 15px;
+  }
 }
 #home_intro h3,
 #home_news h3 {
@@ -139,6 +157,11 @@ h2#sections_intro span {
   font-weight: 900;
   color: #e83d84;
 }
+@media screen and (max-width: 400px) {
+  h2#sections_intro {
+    font-size: 25px;
+  }
+}
 #home_sections .home_section_icon {
   color: #e83d84;
   font-size: 80px;
@@ -181,11 +204,21 @@ a.action {
   height: 300px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
+@media screen and (max-width: 400px) {
+  #footer {
+    margin: 50px -25px -25px;
+  }
+}
 #footer #contact {
   text-align: center;
 }
 #footer #contact p {
   color: #fff;
+}
+@media screen and (max-width: 400px) {
+  #footer #contact {
+    padding-bottom: 20px;
+  }
 }
 #footer #map {
   padding: 0;
