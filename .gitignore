@@ -1,2 +1,7 @@
+# IntelliJ IDEA and Node folders
 .idea
 node_modules
+
+# Assets are compiled by the Grunt pipeline
+*.css
+static/js/*.js
