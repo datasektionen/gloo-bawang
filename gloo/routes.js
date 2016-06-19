@@ -37,7 +37,6 @@ module.exports = function(app) {
 function getTaitanData(path, callback) {
     var options = {
         host: config.taitanHost,
-        port: config.taitanPort,
         path: path,
         method: "GET"
     };
