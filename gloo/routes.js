@@ -25,10 +25,10 @@ module.exports = function(app) {
                 if (taitanData)
                     return res.render(templatePath, taitanData);
                 else
-                    return res.render("_404." + config.extension, { req: req });
+                    return res.status(404).render("_404." + config.extension, { req: req });
             });
         else
-            return res.send("404: The page could not be found and this gloo instance contains no 404 template");
+            return res.status(404).send("404: The page could not be found and this gloo instance contains no 404 template");
 
     });
 
@@ -37,6 +37,7 @@ module.exports = function(app) {
 function getTaitanData(path, callback) {
     var options = {
         host: config.taitanHost,
+        port: config.taitanPort,
         path: path,
         method: "GET"
     };
