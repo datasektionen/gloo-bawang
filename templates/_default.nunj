@@ -10,10 +10,7 @@
 				<div class="col-md-8">
 					<h2>{{ title }}</h2>
 				</div>
-				<div class="header-right col-md-2">
-					<span class="visible-lg-inline">Se p&aring;</span>
-					<a href="https://github.com/datasektionen/bawang-content" class="primary-action">GitHub</a>
-				</div>
+				<div class="header-right col-md-2"></div>
 			</div>
 			<div class="clear"></div>
 		</div>
