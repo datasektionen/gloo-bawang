@@ -31,36 +31,41 @@ class News extends React.Component {
   render() {
     var {items, type} = this.state;
 
+    var highlight = item_type => item_type === type ? "text-theme-color strong" : ""
+
     return (
       <div className="row">
         <div className="col-sm-4 col-md-3">
           <div id="secondary-nav">
             <h3><a href="/nyheter">Nyheter/Event</a></h3>
             <ul>
-              <TypeButton text={'Alla poster'} 
-                          type='all'
-                          stateType={type}
-                          onClick={e => this.getNews('all')} />
-              <TypeButton text={'Bara event'} 
-                          type='event'
-                          stateType={type}
-                          onClick={e => this.getNews('event')} />
-              <TypeButton text={'Inte event'}
-                          type='post'
-                          stateType={type}
-                          onClick={e => this.getNews('post')} />
+              <li>
+                <a className={highlight('all')}
+                   onClick={e => this.getNews('all')}>
+                   Event och poster
+                </a>
+              </li>
+              <li>
+                <a className={highlight('event')}
+                   onClick={e => this.getNews('event')}>
+                   Bara event
+                </a>
+              </li>
+              <li>
+                <a className={highlight('post')}
+                   onClick={e => this.getNews('post')}>
+                   Bara poster
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div className="col-sm-8 col-md-9">
-          <div className="row">
-            <div class="col-sm-9">
-              <div>
-                {this.state.hash.length > 1 ? 
-                  <SingleItem id={this.state.hash.substring(1)} /> :
-                  items.map(item => <NewsItem key={item.id} {...item} />)}
-              </div>
-            </div>
+          <div class="col-sm-9">
+              {this.state.hash.length > 1
+                ? <SingleItem id={this.state.hash.substring(1)} />
+                : items.map(item => <NewsItem key={item.id} {...item} />)
+              }
           </div>
         </div>
       </div>
@@ -103,32 +108,24 @@ class SingleItem extends React.Component {
 
     return (
       <div>
-        <a href="#">Stäng</a>
+        <a href="#" className="close">Stäng</a>
         <h1>{title_sv}</h1>
         <p dangerouslySetInnerHTML={{__html: content_sv}}></p>
-        <p>{author}</p>
+        <p style={{float: "right"}}>&mdash; {author}</p>
       </div>
     )
   }
 }
 
-function TypeButton(props) {
-  return (
-    <li>
-      <a className={props.type === props.stateType ? "text-theme-color strong" : false}
-         onClick={props.onClick}>
-           {props.text}</a>
-    </li>
-  )
-}
-
 function NewsItem(props) {
   return (
-    <div className="col-sm-6 col-md-4">
-      <a href={'#' + props.id} className="notice ultra_light" style={{display: "block"}}>
-        <h3>{props.title}</h3>
-        <p dangerouslySetInnerHTML={{__html: props.content_sv}}></p>
+    <div className="notice ultra_light">
+      <a href={'#' + props.id}>
+        <h1>{props.title_sv}</h1>
       </a>
+      <p dangerouslySetInnerHTML={{__html: props.content_sv}}></p>
+      <p style={{float: "right", marginBottom: 0}} >&mdash; {props.author}</p>
+      <div className="clear"></div>
     </div>
   )
 }
