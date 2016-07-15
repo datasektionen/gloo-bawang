@@ -1,5 +1,4 @@
-const https = require("https");
-const http = require("http");
+const fetch = require("node-fetch");
 const debug = require("debug")("gloo:routes");
 const template = require("./find-template");
 const config = require("./../config");
@@ -19,60 +18,21 @@ module.exports = function(app) {
         var templatePath = template.find(req);
         
         if (templatePath)
-            getTaitanData(req.path, function(taitanData, redirect) {
-                if (redirect)
-                    return res.redirect(redirect);
-                if (taitanData)
-                    return res.render(templatePath, taitanData);
-                else
-                    return res.status(404).render("_404." + config.extension, { req: req });
-            });
+            fetch(config.taitanUrl + req.path)
+                .then(response => {
+                    if (response.ok) return response.json()
+                    else             throw response.status
+                })
+                .then(data => res.render(templatePath, data))
+                .catch(err => {
+                    if (err == 404)
+                        res.status(404).render("_404." + config.extension, { req: req });
+                    else
+                        res.status(500).send("An unexpected error occured. " + err)
+                })
         else
             return res.status(404).send("404: The page could not be found and this gloo instance contains no 404 template");
 
     });
 
 };
-
-function getTaitanData(path, callback) {
-    var options = {
-        host: config.taitanHost,
-        port: config.taitanPort,
-        path: path,
-        method: "GET"
-    };
-
-    var requestCallback = function(res) {
-        var collectedData = "";
-        res.setEncoding("utf-8");
-
-        if (typeof res.headers.location !== "undefined")
-            return callback(undefined, res.headers.location);
-
-        res.on("data", (data) => collectedData += data);
-
-        res.on("end", () => {
-            if (collectedData) {
-                try {
-                    var responseObject = JSON.parse(collectedData);
-                    callback(responseObject);
-                } catch(e) {
-                    debug("Taitan parsing error: " + e);
-                }
-            } else {
-                callback(undefined);
-            }
-        });
-
-        res.on("error", (err) => debug("Taitan connection error: " + err));
-    };
-    
-    
-    var request;
-    if(config.https)
-        request = https.request(options, requestCallback);
-    else
-        request = http.request(options, requestCallback);
-    
-    request.end();
-}
