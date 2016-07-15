@@ -33,6 +33,7 @@
 </div>
 
 {% block js %}{% endblock %}
+<script src="/static/js/app.min.js"></script>
 <script src="//methone.datasektionen.se"></script>
 </body>
 </html>

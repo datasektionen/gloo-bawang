@@ -1,9 +1,8 @@
-require('whatwg-fetch'); // fetch polyfill
+import React from 'react'
 
-var React    = require('react');
-var ReactDom = require('react-dom');
+import {getList, getItem} from './prometheus'
 
-class News extends React.Component {
+export default class News extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,18 +19,15 @@ class News extends React.Component {
     this.getNews(this.state.type)
   }
 
-  getNews(type) { 
-    fetch('https://prometheus.datasektionen.se/api/list/' + type)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({items: json, type: type})
-      })
+  getNews(type) {
+    getList(type)
+      .then(json => this.setState({items: json, type: type}))
   }
 
   render() {
-    var {items, type} = this.state;
+    const {items, type} = this.state;
 
-    var highlight = item_type => item_type === type ? "text-theme-color strong" : ""
+    const highlight = item_type => item_type === type ? "text-theme-color strong" : ""
 
     return (
       <div className="row">
@@ -61,16 +57,26 @@ class News extends React.Component {
           </div>
         </div>
         <div className="col-sm-8 col-md-9">
-          <div class="col-sm-9">
-              {this.state.hash.length > 1
-                ? <SingleItem id={this.state.hash.substring(1)} />
-                : items.map(item => <NewsItem key={item.id} {...item} />)
-              }
-          </div>
+            {this.state.hash.length > 1
+              ? <SingleItem id={this.state.hash.substring(1)} />
+              : items.map(item => <ListItem key={item.id} {...item} />)}
         </div>
       </div>
     )
   }
+}
+
+function ListItem(props) {
+  return (
+    <div className="notice ultra_light">
+      <a href={'#' + props.id}>
+        <h1>{props.title_sv}</h1>
+      </a>
+      <p dangerouslySetInnerHTML={{__html: props.content_sv}}></p>
+      <p style={{float: "right", marginBottom: 0}} >&mdash; {props.author}</p>
+      <div className="clear"></div>
+    </div>
+  )
 }
 
 class SingleItem extends React.Component {
@@ -90,9 +96,7 @@ class SingleItem extends React.Component {
   }
 
   getContent(id) {
-    fetch('https://prometheus.datasektionen.se/api/item/' + id)
-      .then(response => response.json())
-      .then(json => this.setState(json))
+    getItem(id).then(json => this.setState(json))
   }
 
   componentDidMount() {
@@ -104,7 +108,7 @@ class SingleItem extends React.Component {
   }
 
   render() {
-    var {title_sv, content_sv, author} = this.state;
+    const {title_sv, content_sv, author} = this.state;
 
     return (
       <div>
@@ -116,18 +120,3 @@ class SingleItem extends React.Component {
     )
   }
 }
-
-function NewsItem(props) {
-  return (
-    <div className="notice ultra_light">
-      <a href={'#' + props.id}>
-        <h1>{props.title_sv}</h1>
-      </a>
-      <p dangerouslySetInnerHTML={{__html: props.content_sv}}></p>
-      <p style={{float: "right", marginBottom: 0}} >&mdash; {props.author}</p>
-      <div className="clear"></div>
-    </div>
-  )
-}
-
-ReactDom.render(<News />, document.getElementById('mount_point'));

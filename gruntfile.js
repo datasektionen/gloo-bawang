@@ -19,8 +19,7 @@ module.exports = function (grunt) {
         browserify: {
             dev: {
                 files: {
-                    'static/js/news.js': ['static/js/news.jsx'],
-                    'static/js/first.js': ['static/js/first.jsx', 'static/js/stickies.jsx']
+                    'static/js/app.js': ['static/js/app.jsx'],
                 },
                 options: {
                     transform: [
@@ -32,8 +31,7 @@ module.exports = function (grunt) {
         uglify: {
             dev: {
                 files: {
-                    'static/js/first.min.js': 'static/js/first.js',
-                    'static/js/news.min.js': 'static/js/news.js'
+                    'static/js/app.min.js': 'static/js/app.js'
                 }
             }
         }

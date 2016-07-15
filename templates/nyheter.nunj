@@ -25,7 +25,3 @@
     </div>
 
 {% endblock %}
-
-{% block js %}
-    <script src="/static/js/news.min.js"></script>
-{% endblock %}
