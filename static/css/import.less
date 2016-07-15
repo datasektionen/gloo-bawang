@@ -114,7 +114,6 @@ header#home {
   .news_item {
     display: block;
     margin-bottom: 10px;
-    max-height: 60px;
     overflow: hidden;
     color: @blue !important;
 
@@ -125,6 +124,8 @@ header#home {
       display: block;
       max-height: 30px;
       overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .news_item_meta {
@@ -151,6 +152,9 @@ header#home {
     p {
       font-size: 14px;
       color: @blue;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
