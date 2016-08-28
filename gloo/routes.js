@@ -20,13 +20,22 @@ module.exports = function(app) {
         if (templatePath)
             fetch(config.taitanUrl + req.path)
                 .then(response => {
-                    if (response.ok) return response.json()
-                    else             throw response.status
+                    if (response.ok && response.url === config.taitanUrl + req.path)
+                        return response.json()
+                    else if (response.ok)
+                        if (response.url.indexOf(config.taitanUrl) === 0)
+                            throw response.url.substr(config.taitanUrl.length)
+                        else
+                            throw response.url
+                    else
+                        throw response.status
                 })
                 .then(data => res.render(templatePath, data))
                 .catch(err => {
                     if (err == 404)
                         res.status(404).render("_404." + config.extension, { req: req });
+                    else if (err.startsWith("/") || err.startsWith("http"))
+                        res.redirect(err)
                     else
                         res.status(500).send("An unexpected error occured. " + err)
                 })
