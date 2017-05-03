@@ -1,0 +1,87 @@
+{% extends "templates/en/_layout.nunj" %}
+{% block content %}
+
+	<header>
+		<div class="header-inner">
+			<div class="row">
+				<div class="header-left col-md-2">
+					<a href="/">&laquo; Back</a>
+				</div>
+				<div class="col-md-8">
+					<h2>{{ title }}</h2>
+				</div>
+				<div class="header-right col-md-2"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</header>
+	<div id="content">
+		{% block body %}
+			<div class="row">
+				<div class="col-sm-4 col-md-3">
+					<div id="secondary-nav">
+						{% block navigation %}
+							{% set levelTwo = false %}
+							{% for topItem in nav %}
+								{% if topItem.expanded or topItem.active %}
+									{% set levelTwo = true %}
+									<h3><a href="{{ topItem.slug }}">{{ topItem.title }}</a></h3>
+									<ul>
+										{% for item in topItem.nav %}
+											<li><a {% if item.active %} class="text-theme-color strong" {% endif %}
+														href="{{ item.slug }}">{{ item.title }}</a></li>
+											{% if item.nav %}
+												<ul>
+													{% for child in item.nav %}
+														<li><a href="{{ child.slug }}">{{ child.title }}</a></li>
+													{% endfor %}
+												</ul>
+											{% endif %}
+										{% endfor %}
+									</ul>
+								{% endif %}
+							{% endfor %}
+							{% if not levelTwo %}
+								<h3><a href="/">{{ title }}</a></h3>
+								{% for topItem in nav %}
+									<ul>
+										<li>
+											<a href="{{ topItem.slug }}">{{ topItem.title }}</a>
+										</li>
+									</ul>
+								{% endfor %}
+							{% endif %}
+						{% endblock %}
+					</div>
+				</div>
+				<div class="col-sm-8 col-md-9">
+					<div class="row">
+						<div class="col-md-9">
+							{{ body | safe }}
+						</div>
+						<div class="col-md-3" id="sidebar">
+							{% block sidebar %}
+								{% if sidebar != "" %}
+									<div class="sidebar-card">
+										{{ sidebar | safe }}
+									</div>
+								{% endif %}
+								<div class="sidebar-card">
+									<h2>On this page</h2>
+									<ul>
+										{% for anchor in anchors %}
+											<li><a href="#{{ anchor.id }}">{{ anchor.value }}</a></li>
+										{% endfor %}
+									</ul>
+								</div>
+							{% endblock %}
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		{% endblock %}
+		{% include "templates/en/_footer.nunj" %}
+	</div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "templates/en/_layout.nunj" %}
+{% block content %}
+
+    <header id="home">
+        <div id="shield">
+            <a href="/">
+                <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
+            </a>
+        </div>
+
+        <div id="home_logo">
+            <small>Welcome to</small>
+            <h1>Konglig Datasektionen</h1>
+            <small>at the Royal Institute of Technology</small>
+        </div>
+    </header>
+
+    <div id="content">
+        <div class="row">
+            <div class="col-md-6" id="home_intro">
+                {{ body | safe }}
+            </div>
+            <div class="col-md-6" id="home_news">
+                <div class="row">
+                    <div class="col-sm-6" id="news">
+                        <a class="news_item" href="#">
+                            <h4>Teckningskväll Chill and Sketch</h4>
+                            <div class="news_item_meta">
+                                <i class="fa fa-clock-o"></i> 21 september 17:30
+                            </div>
+                            <div class="news_item_meta">
+                                <i class="fa fa-location-arrow"></i> META
+                            </div>
+                        </a>
+                        <a class="news_item" href="#">
+                            <h4>Hackerkväll: CONSOLE WARS!</h4>
+                            <div class="news_item_meta">
+                                <i class="fa fa-clock-o"></i> 29 april 17:17
+                            </div>
+                            <div class="news_item_meta">
+                                <i class="fa fa-location-arrow"></i> Grå
+                            </div>
+                        </a>
+                        <a class="news_item" href="#">
+                            <h4>Godis-Söndags-DM-innan-Val-SM (ˆڡˆ) Candy-Sunday-DM-before-Election-Chapter-Meeting</h4>
+                            <div class="news_item_meta">
+                                <i class="fa fa-clock-o"></i> 21 september 17:30
+                            </div>
+                            <div class="news_item_meta">
+                                <i class="fa fa-location-arrow"></i> Obestämd plats
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-6" id="sticky">
+                        <h4>META stängt under D-Dagen 1 oktober</h4>
+                        <p>Under torsdagen den 1 oktober kommer META vara stängt eftersom den kommer utnyttjas som företagslounge. Värma mat går att t.ex. göra i Nymble.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <hr />
+
+        <h2 id="sections_intro">This is <span>Datasektionen</span></h2>
+
+        <div id="home_sections">
+            {% for item in sidebar | split("<hr>") %}
+                <div class="col-md-4 home_section">
+                    <div class="home_section_icon">
+                        <i class="fa"></i>
+                    </div>
+                    {{ item | safe }}
+                </div>
+            {% endfor %}
+        </div>
+
+        {% include "templates/en/_footer.nunj" %}
+
+    </div>
+
+{% endblock %}
