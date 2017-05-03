@@ -3,7 +3,7 @@
 
     <header id="home">
         <div id="shield">
-            <a href="/">
+            <a href="/en">
                 <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
             </a>
         </div>

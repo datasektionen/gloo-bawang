@@ -11,11 +11,11 @@
             100 44 Stockholm
         </p>
         <p>
-            <strong>Organisationsnummer</strong>
+            <strong>Organization number</strong>
         </p>
         <p>802412 - 7709</p>
         <p>
-            <a class="action" href="/kontakt">Contact</a>
+            <a class="action" href="/contact">Contact</a>
         </p>
     </div>
     <div class="col-sm-6 col-md-9" id="map">

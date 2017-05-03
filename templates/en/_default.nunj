@@ -5,7 +5,7 @@
 		<div class="header-inner">
 			<div class="row">
 				<div class="header-left col-md-2">
-					<a href="/">&laquo; Back</a>
+					<a href="/en">&laquo; Back</a>
 				</div>
 				<div class="col-md-8">
 					<h2>{{ title }}</h2>
@@ -42,7 +42,7 @@
 								{% endif %}
 							{% endfor %}
 							{% if not levelTwo %}
-								<h3><a href="/">{{ title }}</a></h3>
+								<h3><a href="/en">{{ title }}</a></h3>
 								{% for topItem in nav %}
 									<ul>
 										<li>
