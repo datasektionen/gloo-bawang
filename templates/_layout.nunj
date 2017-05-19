@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="//aurora.datasektionen.se/" type="text/css" />
     <link rel="stylesheet" href="/static/css/compiled.css">
     <script type="text/javascript">
-        window.tbaas_conf = {
+        window.methone_conf = {
             system_name: "bawang",
-            target_id: "methone-container-replace",
-            primary_color: "#ec5f99",
-            secondary_color: "#fff",
-            bar_color: "#e83d84",
-            topbar_items: [
+            color_scheme: "cerice",
+            login_text: "",
+            login_link: "#",
+            links: [
                 { str: "Nyheter", href: "/nyheter" },
                 { str: "Sektionen", href: "/sektionen" },
                 { str: "Studier", href: "/studier" },
@@ -34,6 +33,6 @@
 
 {% block js %}{% endblock %}
 <script src="/static/js/app.min.js"></script>
-<script src="//methone.datasektionen.se"></script>
+<script src="//methone.datasektionen.se/bar.js"></script>
 </body>
 </html>

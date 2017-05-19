@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node gloo/tests.js",
-    "start": "grunt; node index.js"
+    "start": "node index.js",
+    "postinstall": "grunt"
   },
   "repository": {
     "type": "git",

@@ -30,7 +30,12 @@ module.exports = function(app) {
                     else
                         throw response.status
                 })
-                .then(data => res.render(templatePath, data))
+                .then(data => {
+                    if(data.fuzzes)
+                        res.send(data)
+                    else
+                        res.render(templatePath, data)
+                })
                 .catch(err => {
                     if (err == 404)
                         res.status(404).render("_404." + config.extension, { req: req });
