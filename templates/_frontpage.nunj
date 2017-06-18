@@ -1,7 +1,7 @@
 {% extends "templates/_layout.nunj" %}
 {% block content %}
 
-    <header id="home">
+    <header id="home" style="background-image: url('{{ image  }}')">
         <div id="shield">
             <a href="/">
                 <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />
