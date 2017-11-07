@@ -9,7 +9,6 @@ const config = require("./../config");
  * @param req       Express request object
  */
 exports.find = function(req) {
-
     var searchPath = req.path;
 
     // 1. Root URL always renders frontpage template
@@ -50,6 +49,12 @@ exports.find = function(req) {
  * @returns         string/undefined
  */
 function resolveTemplate(fullPath) {
+    // 1. Root URL always renders frontpage template
+    if (fullPath === "/")
+        return config.frontpageTemplate + "." + config.extension;
+
+    if (fullPath === "/en" || fullPath === "/en/")
+        return "en/" + config.frontpageTemplate + "." + config.extension;
 
     var fullPathWithExt = fullPath + "." + config.extension;
 
