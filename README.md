@@ -3,6 +3,9 @@
 
 An app for taking data from Taitan (or similar) and rendering it according to templates, returns html to the user.
 
+## Run it
+`npm start` is the command you're looking for.
+
 ## Procedure:
  1. We listen for e.g. `GET gloo.datasektionen.se/stuff/abc`
  2. We `GET taitan.datasektionen.se/stuff/abc`, this is the data that will be rendered.
