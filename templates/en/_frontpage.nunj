@@ -1,7 +1,18 @@
 {% extends "templates/en/_layout.nunj" %}
 {% block content %}
 
-    <header id="home">
+    {% if message and message.length > 0 %}
+    <div id="message" class="message text-lighten-4 darken-3" style="padding: 20px 0 10px;">
+        <div class="contain">
+            {# Implement if you wanna: <button class="btn primary-action theme-color" style="float:right">Dölj</button> #}
+            <p style="padding: 0 20px;">
+                <a href="/namnder/mottagningen" class="text-lighten-5">{{ message }}</a> 
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+    <header id="home" style="background-image: url('{{ image  }}')">
         <div id="shield">
             <a href="/en">
                 <img src="/static/gfx/Skold_Vit_Final.png" width="50%" />

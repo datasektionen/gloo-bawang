@@ -17,36 +17,47 @@ module.exports = function(app) {
         
         var templatePath = template.find(req);
         
-        if (templatePath)
+        if (templatePath) {
             fetch(config.taitanUrl + req.path)
                 .then(response => {
-                    if (response.ok && response.url === config.taitanUrl + req.path)
+                    if (response.ok && response.url === config.taitanUrl + req.path) {
                         return response.json()
-                    else if (response.ok)
-                        if (response.url.indexOf(config.taitanUrl) === 0)
+                    } else if (response.ok) {
+                        if (response.url.indexOf(config.taitanUrl) === 0) {
                             throw response.url.substr(config.taitanUrl.length)
-                        else
+                        } else {
                             throw response.url
-                    else
+                        }
+                    } else {
                         throw response.status
+                    }
                 })
                 .then(data => {
-                    if(data.fuzzes)
+                    if(data.fuzzes) {
                         res.send(data)
-                    else
+                    } else {
                         res.render(templatePath, data)
+                    }
                 })
                 .catch(err => {
-                    if (err == 404)
-                        res.status(404).render("_404." + config.extension, { req: req });
-                    else if (err.startsWith("/") || err.startsWith("http"))
+                    if (err == 404) {
+                        if (req.path.startsWith("/en")) {
+                            res.status(404).render("en/_404." + config.extension, { req: req });
+                        } else {
+                            res.status(404).render("_404." + config.extension, { req: req });
+                        }
+                    } else if (err.name == "FetchError") {
+                        console.error("Taitan service is not started");
+                        console.error(err);
+                        res.status(500).send("Nån felkonfa servern, lol.\n" + err)
+                    } else if (err.startsWith("/") || err.startsWith("http")) {
                         res.redirect(err)
-                    else
+                    } else {
                         res.status(500).send("An unexpected error occured. " + err)
+                    }
                 })
-        else
+        } else {
             return res.status(404).send("404: The page could not be found and this gloo instance contains no 404 template");
-
+        }
     });
-
 };
