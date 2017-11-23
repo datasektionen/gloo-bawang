@@ -20,8 +20,8 @@
         </div>
 
         <div id="home_logo">
-            <small>Welcome to</small>
-            <h1>Konglig Datasektionen</h1>
+            <small>Welcome to the</small>
+            <h1>Röyal Data Chapter</h1>
             <small>at the Royal Institute of Technology</small>
         </div>
     </header>
@@ -73,7 +73,7 @@
         <div class="clear"></div>
         <hr />
 
-        <h2 id="sections_intro">This is <span>Datasektionen</span></h2>
+        <h2 id="sections_intro">This is the <span>Data Chapter</span></h2>
 
         <div id="home_sections">
             {% for item in sidebar | split("<hr>") %}
